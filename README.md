@@ -2,17 +2,17 @@
 
 ## Project Overview
 
-This project was developed as part of my Master's thesis and focuses on predicting food contamination risk using machine learning techniques. The goal is to analyze environmental and operational sensor data to identify patterns associated with contamination risk in food supply chains.
+This project was developed as part of my Master's thesis and focuses on predicting food contamination risk using machine learning techniques. The objective is to analyze environmental and operational monitoring data to identify patterns associated with contamination events in food supply chains.
 
-The project demonstrates the application of data preprocessing, exploratory data analysis, machine learning modeling, and explainable AI to support early contamination detection and preventive decision-making.
+The project demonstrates data preprocessing, exploratory data analysis, machine learning modeling, and performance evaluation to support early detection of contamination risk.
 
 ---
 
 ## Dataset
 
-The dataset contains simulated environmental and operational monitoring data representing food supply chain conditions.
+The dataset used in this project contains simulated environmental and operational monitoring data representing food supply chain conditions.
 
-Key variables include:
+Key features include:
 
 * Temperature
 * Humidity
@@ -22,9 +22,9 @@ Key variables include:
 * Seal Integrity
 * Cleanliness Index
 * Supply Delay
-* Contamination Risk (target variable)
+* Contamination Risk (Target Variable)
 
-The dataset contains **5,000 records** representing simulated supply chain batches. 
+The dataset consists of **5,000 simulated supply chain records**.
 
 ---
 
@@ -44,7 +44,7 @@ The dataset contains **5,000 records** representing simulated supply chain batch
 
 ## Methodology
 
-The project follows a complete machine learning pipeline:
+The project follows a complete machine learning workflow:
 
 1. Data preprocessing and cleaning
 2. Exploratory data analysis (EDA)
@@ -52,7 +52,6 @@ The project follows a complete machine learning pipeline:
 4. Training machine learning models (Logistic Regression, Random Forest, XGBoost)
 5. Model evaluation using ROC-AUC and Precision-Recall metrics
 6. Model explainability using SHAP values
-7. Risk phenotype identification using K-means clustering
 
 ---
 
@@ -67,9 +66,9 @@ Key performance metrics:
 * **Precision:** 1.000
 * **Recall:** 0.850
 * **F1 Score:** 0.919
-* **Operating Threshold (τ):** 0.988
+* **Operating Threshold:** 0.988
 
-At the selected threshold, the model achieved **perfect precision with zero false positives**, making it suitable for safety-critical contamination detection scenarios. 
+At the selected threshold, the model achieved **perfect precision with zero false positives**, making it suitable for safety-critical contamination detection scenarios.
 
 ---
 
@@ -77,53 +76,66 @@ At the selected threshold, the model achieved **perfect precision with zero fals
 
 ### ROC Curve
 
-The ROC curve shows the model’s ability to distinguish contaminated and safe batches.
+The ROC curve illustrates the model’s ability to distinguish contaminated and safe samples.
 
-![ROC Curve](images/roc_curve.png)
+![ROC Curve](ROC_curve.png)
 
 ---
 
-### Precision-Recall Curve
+### Precision–Recall Curve
 
-The Precision-Recall curve demonstrates strong performance even under class imbalance.
+The Precision–Recall curve evaluates the trade-off between precision and recall.
 
-![Precision Recall Curve](images/precision_recall_curve.png)
+![Precision Recall Curve](PR_curve.png)
+
+---
+
+### Random Forest Precision–Recall Curve
+
+Performance visualization for the Random Forest model.
+
+![Random Forest Precision Recall](rf_precision_recall.png)
 
 ---
 
 ### Predicted Probability Distribution
 
-This visualization shows how predicted contamination probabilities separate safe and contaminated batches.
+This visualization shows the distribution of predicted contamination probabilities.
 
-![Probability Distribution](images/probability_distribution.png)
-
----
-
-## Key Insights
-
-* Environmental conditions such as **humidity, seal integrity, and cleanliness** strongly influence contamination risk.
-* The XGBoost model achieved near-perfect discrimination between safe and contaminated batches.
-* Explainable AI techniques (SHAP) revealed the most influential risk factors.
-* Clustering analysis identified interpretable **risk phenotypes** that can guide preventive supply chain actions.
+![Probability Distribution](probability_distribution.png)
 
 ---
 
-## Project Structure
+## Additional Model Outputs
+
+The repository also includes additional evaluation outputs:
+
+* `confusion_matrix.csv`
+* `operating_point_metrics.csv`
+* `threshold_selection_table.csv`
+* `shap_global_importance.csv`
+
+These files contain model evaluation metrics and feature importance analysis.
+
+---
+
+## Project Files
 
 food-contamination-risk-prediction
 │
-├── notebook
-│   └── food-contamination-risk-analysis.ipynb
+├── exp.ipynb
+├── MasterThesis_ShamaArzeena_64348914.pdf
+├── simulated_food_contamination_dataset.zip
 │
-├── data
-│   └── simulated_food_contamination_dataset.csv
+├── ROC_curve.png
+├── PR_curve.png
+├── rf_precision_recall.png
+├── probability_distribution.png
 │
-├── images
-│   ├── roc_curve.png
-│   ├── precision_recall_curve.png
-│   └── probability_distribution.png
-│
-├── model_results
+├── confusion_matrix.csv
+├── operating_point_metrics.csv
+├── shap_global_importance.csv
+├── threshold_selection_table.csv
 │
 └── README.md
 
